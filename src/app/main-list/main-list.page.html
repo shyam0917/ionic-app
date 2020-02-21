@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar class="customize-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-img class="logo p-3" src="assets/img/logo.png"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="app-layout set-height">
+    <div class="container">
+      <div class="heading">
+        <h3 *ngIf="switch=='1'">CLIENTS</h3>
+        <h3 *ngIf="switch=='2'">CLOCK IN/OUT</h3>
+        <h3 *ngIf="switch=='3'">PROJECTS</h3>
+        <h3 *ngIf="switch=='4'">INVOICES</h3>
+        <h3 *ngIf="switch=='5'">ESTIMATE</h3>
+        <h3 *ngIf="switch=='6'">PAYMENT</h3>
+        <h3 *ngIf="switch=='7'">RECEIPT UPLOAD</h3>
+      </div>
+      <ion-searchbar *ngIf="switch!='7'" class="search-bar"></ion-searchbar>
+
+      <ion-list *ngIf="switch=='1'" class="main-list">
+        <ion-item *ngFor="let item of customArr" lines="none" routerLink="/table/1">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2>{{item?.post_title}}</h2>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+        <!-- <ion-item lines="none" routerLink="/table/1">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <h2>Fusion Projects </h2>
+          </ion-label>
+        </ion-item>   -->
+      </ion-list>
+
+      <ion-list *ngIf="switch=='2'" class="main-list">
+        <ion-item lines="none" routerLink="/table/2">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2>James </h2>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" routerLink="/table/2">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <h2>Bob</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+
+      <ion-list *ngIf="switch=='3'" class="main-list">
+        <ion-item lines="none" routerLink="/table/3">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2>BC RECYCLE </h2>
+              <h3><b><i class="far fa-calendar-alt"></i> : </b>14/02/2020 </h3>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" routerLink="/table/3">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <h2>Man Den </h2>
+            <h3><b><i class="far fa-calendar-alt"></i> : </b>08/02/2020 </h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngIf="switch=='4'" class="main-list">
+        <ion-item lines="none" routerLink="/table/4">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2>Maquina </h2>
+              <h3><b>Amount: </b>$100 </h3>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" routerLink="/table/4">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <h2>Adley </h2>
+            <h3><b>Amount: </b>$200 </h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+
+      <ion-list *ngIf="switch=='5'" class="main-list">
+        <ion-item lines="none" routerLink="/table/5">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2>James </h2>
+              <h3><b>Amount: </b>$80 </h3>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" routerLink="/table/5">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <h2>Heena </h2>
+            <h3><b>Amount: </b>$20 </h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngIf="switch=='6'" class="main-list">
+        <ion-item lines="none" routerLink="/table/6">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <ion-label>
+              <h2>Paul Molive </h2>
+              <h3><b>Amount: </b>$80 </h3>
+            </ion-label>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" routerLink="/table/6">
+          <ion-avatar slot="start">
+            <span class="icon"><i class="fas fa-user-circle"></i></span>
+          </ion-avatar>
+          <ion-label>
+            <h2>Richard </h2>
+            <h3><b>Amount: </b>$20 </h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div class="invoice-upload" *ngIf="switch=='7'">
+        <p>Please upload the receipt. (Only JPG, PNG and GIF files are allowed)</p>
+        <ion-button color="light">Upload File</ion-button>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
