@@ -10,7 +10,7 @@ export class AuthenticationService {
   constructor(public http: HttpClient) { }
 
   oniLogin(loginInfo) {
-    return this.http.post('http://192.168.1.129/wordpress/wp-json/custom-plugin/login', loginInfo).pipe(
+    return this.http.post('http://192.168.1.129/cands/wp-json/custom-plugin/login', loginInfo).pipe(
       map(results => results)
     );
   }
