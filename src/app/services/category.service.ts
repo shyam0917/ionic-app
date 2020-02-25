@@ -19,9 +19,8 @@ export class CategoryService {
 
   //get client category details
   getClientData() {
-    return this.http.get(this.baseUrl + 'clients').pipe(
-      map(results => results)
-    );
+    return this.http.get(this.baseUrl + 'clients')
+
   }
 
   //get invoice category details

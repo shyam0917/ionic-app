@@ -10,12 +10,29 @@ import { CategoryService } from '../services/category.service';
 export class TablePage implements OnInit {
   tableSwitch: string;
   tableArr: any = [];
-
+  tableData: any = {};
+  showDetails: boolean;
   constructor(private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.tableSwitch = this.activatedRoute.snapshot.paramMap.get('id');
+    this.activatedRoute.queryParams
+      .subscribe(params => {
+        if (params) {
+          this.tableData = params;
+          if (this.tableSwitch == '3') {
+            if (this.tableData['client_contact_name'] && this.tableData['client_company_name']
+              && this.tableData['client_telephone'] && this.tableData['client_email']) {
+              this.showDetails = true;
+            } else {
+              this.showDetails = false
+            }
+          }
+        }
+
+        console.log(params);
+      })
     this.getCategoryData();
   }
 

@@ -10,7 +10,7 @@ import { CategoryService } from '../services/category.service';
 export class MainListPage implements OnInit {
   switch: string;
   categoryArr: any = [];
-
+  testObject: any = {};
   constructor(private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService) { }
 
@@ -24,9 +24,10 @@ export class MainListPage implements OnInit {
     // get Client Data
     if (this.switch && this.switch == '1') {
       this.categoryService.getClientData().subscribe(res => {
-        if (res['data']) {
-          this.categoryArr = res['data'];
+        if (res) {
+          this.testObject = res;
         }
+
 
       }, err => {
         console.log("err", err);

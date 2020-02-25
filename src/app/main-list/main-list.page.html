@@ -23,13 +23,14 @@
 
       <!-- Client Details -->
       <ion-list *ngIf="switch=='1'" class="main-list">
-        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/1">
+        <ion-item *ngFor="let item of testObject | keyvalue" lines="none" routerLink="/table/1"
+          [queryParams]="item.value">
           <ion-avatar slot="start">
             <span class="icon"><i class="fas fa-user-circle"></i></span>
           </ion-avatar>
           <ion-label>
             <ion-label>
-              <h2 class="set-content" [innerHTML]="item.post_title"></h2>
+              <h2 class="set-content" innerHTML="{{item.value?.title}} - <b>{{item.value?.post_status}}</b>"></h2>
             </ion-label>
           </ion-label>
         </ion-item>
@@ -59,14 +60,14 @@
 
       <!-- project Details -->
       <ion-list *ngIf="switch=='3'" class="main-list">
-        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/3">
+        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/3" [queryParams]="item">
           <ion-avatar slot="start">
             <span class="icon"><i class="fas fa-user-circle"></i></span>
           </ion-avatar>
           <ion-label>
             <ion-label>
-              <h2 class="set-content" [innerHTML]="item.post_title"></h2>
-              <h3><b><i class="far fa-calendar-alt"></i> : </b>{{item?.post_date | date:'shortDate'}}</h3>
+              <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
+              <h3><b><i class="far fa-calendar-alt"></i> : </b>{{item?.post_modified | date:'shortDate'}}</h3>
             </ion-label>
           </ion-label>
         </ion-item>

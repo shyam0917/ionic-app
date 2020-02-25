@@ -19,19 +19,19 @@
           <ion-label>
             <ion-label>
               <div class="main-detail">
-                <h3><b>Name: </b>Fusion Projects </h3>
-                <h3 id="projects"><b>Type: </b>Projects </h3>
+                <h3><b>Name: </b>{{tableData?.title}}</h3>
+                <h3 id="projects"><b>Client Type: </b>Projects </h3>
                 <div class="main-subdetail">
                   <h2><b>Associated User</b></h2>
-                  <p><b>User ID: </b> 106</p>
+                  <p><b>User ID: </b>{{tableData?.userid}}</p>
                   <p><b>Username: </b> btran@fusion-projects.com</p>
-                  <p><b>Company Name: </b> Fusion projects</p>
+                  <p><b>Company Name: </b>{{tableData?.company_name}}</p>
                 </div>
                 <div class="main-subdetail">
                   <h2><b>Contact Details</b></h2>
-                  <p><b>Contact Name: </b> Benson Tran</p>
-                  <p><b>Email: </b> btran@fusion-projects.com</p>
-                  <p><b>Telephone: </b> 971232544</p>
+                  <p><b>Contact Name: </b>{{tableData?.company_contact}}</p>
+                  <p><b>Email: </b>{{tableData?.company_email}}</p>
+                  <p><b>Telephone: </b>{{tableData?.company_telephone}}</p>
                 </div>
               </div>
             </ion-label>
@@ -87,15 +87,20 @@
           <ion-label>
             <ion-label>
               <div class="main-detail">
-                <h3><b>Name: </b>BC RECYCLE </h3>
-                <h3><b>Date: </b>14/02/2020 </h3>
+                <h3><b>Name: </b> {{tableData?.title}} </h3>
+                <h3><b>Last Modified: </b>{{tableData?.post_modified | date:'shortDate'}} </h3>
                 <h3 id="projects"><b>Project Type: </b>Projects </h3>
                 <div class="main-subdetail">
                   <h2><b>Client Details</b></h2>
-                  <p><b>Company Name: </b> Elite Results Marketing Group</p>
-                  <p><b>Contact Name:: </b> James Findlay</p>
-                  <p><b>Email: </b> james@elitermg.com</p>
-                  <p><b>Telephone: </b> 16047571117/p>
+                  <span *ngIf="showDetails">
+                    <p><b>Company Name: </b> {{tableData?.client_company_name}}</p>
+                    <p><b>Contact Name: </b> {{tableData?.client_contact_name}}</p>
+                    <p><b>Email: </b> {{tableData?.client_email}}</p>
+                    <p><b>Telephone: </b> {{tableData?.client_telephone}}</p>
+                  </span>
+                  <span *ngIf="!showDetails">
+                    <p>Not Available</p>
+                  </span>
                 </div>
                 <div class="main-subdetail">
                   <h2><b>Status</b></h2>
