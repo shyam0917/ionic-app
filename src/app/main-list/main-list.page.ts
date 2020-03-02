@@ -11,12 +11,15 @@ export class MainListPage implements OnInit {
   switch: string;
   categoryArr: any = [];
   testObject: any = {};
+  errMessage: string = "";
+
   constructor(private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.switch = this.activatedRoute.snapshot.paramMap.get('id');
     this.getCategoryData();
+    this.errMessage = "";
   }
 
   getCategoryData() {
@@ -36,13 +39,20 @@ export class MainListPage implements OnInit {
 
     // get project Data
     if (this.switch && this.switch == '3') {
-      this.categoryService.getProjectData().subscribe(res => {
+      let clientID = JSON.parse(localStorage.getItem('userData'))['ID'];
+      console.log(clientID);
+      const userId = new FormData();
+      userId.append('id', clientID);
+      this.categoryService.getProjectData(userId).subscribe(res => {
         if (res['data']) {
           this.categoryArr = res['data'];
-          console.log(this.categoryArr, res);
+          console.log(this.categoryArr, res, "apiiiiiiiiii");
         }
 
       }, err => {
+        if (err['status'] == '404') {
+          this.errMessage = "Internal Error Occured";
+        }
         console.log("err", err);
       })
     }
@@ -62,8 +72,9 @@ export class MainListPage implements OnInit {
     // get estimate Data
     if (this.switch && this.switch == '5') {
       this.categoryService.getEstimateData().subscribe(res => {
-        if (res['length']) {
-          this.categoryArr = res;
+        if (res['data']) {
+          this.categoryArr = res['data'];
+          console.log(this.categoryArr, res);
         }
 
       }, err => {

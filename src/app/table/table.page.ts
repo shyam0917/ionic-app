@@ -11,7 +11,6 @@ export class TablePage implements OnInit {
   tableSwitch: string;
   tableArr: any = [];
   tableData: any = {};
-  showDetails: boolean;
   constructor(private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService) { }
 
@@ -21,14 +20,6 @@ export class TablePage implements OnInit {
       .subscribe(params => {
         if (params) {
           this.tableData = params;
-          if (this.tableSwitch == '3') {
-            if (this.tableData['client_contact_name'] && this.tableData['client_company_name']
-              && this.tableData['client_telephone'] && this.tableData['client_email']) {
-              this.showDetails = true;
-            } else {
-              this.showDetails = false
-            }
-          }
         }
 
         console.log(params);
@@ -52,14 +43,18 @@ export class TablePage implements OnInit {
 
     // get project Data
     if (this.tableSwitch && this.tableSwitch == '3') {
-      this.categoryService.getProjectData().subscribe(res => {
-        if (res['length']) {
-          this.tableArr = res;
+      let clientID = JSON.parse(localStorage.getItem('userData'))['ID'];
+      const userId = new FormData();
+      userId.append('id', clientID);
+      this.categoryService.getProjectData(userId).subscribe(res => {
+        if (res['data']) {
+          this.tableArr = res['data'];
         }
 
       }, err => {
         console.log("err", err);
       })
+
     }
 
     // get invoice Data

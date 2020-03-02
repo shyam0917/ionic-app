@@ -53,4 +53,33 @@
   white-space: normal;
 }
 
+.container {
+  background-color: black;
+}
+
+.note-detail {
+  border-top: 1px solid #bfbfbf;
+  padding: 10px 0;
+}
+
+.set-p p,
+.set-p h3,
+.set-p b {
+  margin-bottom: 0px !important;
+}
+
+.set-p b {
+  font-size: 15px !important;
+}
+
+.set-p h2 b {
+  font-size: 17px !important;
+}
+
+.set-p .main-subdetail h2,
+.set-p .note-detail h2 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
 /**LIST: START**/

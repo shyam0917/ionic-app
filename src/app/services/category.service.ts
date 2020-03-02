@@ -11,8 +11,8 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   //get project category details
-  getProjectData() {
-    return this.http.get(this.baseUrl + 'projects').pipe(
+  getProjectData(userId) {
+    return this.http.post(this.baseUrl + 'projects', userId).pipe(
       map(results => results)
     );
   }

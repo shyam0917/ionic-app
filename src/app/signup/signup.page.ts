@@ -46,6 +46,7 @@ export class SignupPage implements OnInit {
       this.loginService.oniLogin(formData).subscribe(res => {
         if (res && res['data']) {
           this.router.navigate(['home']);
+          localStorage.setItem("userData", JSON.stringify(res['data']));
           console.log(res, "res");
         } else {
           this.isFailed = true;

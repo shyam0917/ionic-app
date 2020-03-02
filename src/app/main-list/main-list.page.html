@@ -60,6 +60,7 @@
 
       <!-- project Details -->
       <ion-list *ngIf="switch=='3'" class="main-list">
+        <h5 *ngIf="errMessage" class="text-center text-danger">{{errMessage}}</h5>
         <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/3" [queryParams]="item">
           <ion-avatar slot="start">
             <span class="icon"><i class="fas fa-user-circle"></i></span>
@@ -67,7 +68,7 @@
           <ion-label>
             <ion-label>
               <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
-              <h3><b><i class="far fa-calendar-alt"></i> : </b>{{item?.post_modified | date:'shortDate'}}</h3>
+              <h3><b><i class="far fa-calendar-alt"></i> : </b>{{item?.post_modified | date: 'dd/MM/yyyy'}}</h3>
             </ion-label>
           </ion-label>
         </ion-item>
@@ -81,7 +82,7 @@
           </ion-avatar>
           <ion-label>
             <ion-label>
-              <h2 class="set-content" [innerHTML]="item.post_title"></h2>
+              <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
               <h3><b>Amount: </b>$100 </h3>
             </ion-label>
           </ion-label>
@@ -90,13 +91,13 @@
 
       <!-- Estimate Details -->
       <ion-list *ngIf="switch=='5'" class="main-list">
-        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/5">
+        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/5" [queryParams]="item">
           <ion-avatar slot="start">
             <span class="icon"><i class="fas fa-user-circle"></i></span>
           </ion-avatar>
           <ion-label>
             <ion-label>
-              <h2 class="set-content" [innerHTML]="item.post_title"></h2>
+              <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
               <!-- <h3><b>Amount: </b>$80 </h3> -->
             </ion-label>
           </ion-label>

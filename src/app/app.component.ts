@@ -52,6 +52,7 @@ export class AppComponent implements OnInit {
   goTo(path) {
     if (path.url === '/signout') {
       this.router.navigate(['signup']);
+      localStorage.removeItem('userData');
     }
 
   }
