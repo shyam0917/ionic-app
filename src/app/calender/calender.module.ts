@@ -19,4 +19,4 @@ import { CalenderPage } from './calender.page';
   ],
   declarations: [CalenderPage]
 })
-export class CalenderPageModule {}
+export class CalenderPageModule { }

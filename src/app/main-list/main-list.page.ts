@@ -60,8 +60,8 @@ export class MainListPage implements OnInit {
     // get invoice Data
     if (this.switch && this.switch == '4') {
       this.categoryService.getInvoiceData().subscribe(res => {
-        if (res['length']) {
-          this.categoryArr = res;
+        if (res && res['data']) {
+          this.categoryArr = res['data'];
         }
 
       }, err => {

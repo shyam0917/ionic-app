@@ -57,18 +57,6 @@ export class TablePage implements OnInit {
 
     }
 
-    // get invoice Data
-    if (this.tableSwitch && this.tableSwitch == '4') {
-      this.categoryService.getInvoiceData().subscribe(res => {
-        if (res['length']) {
-          this.tableArr = res;
-        }
-
-      }, err => {
-        console.log("err", err);
-      })
-    }
-
     // get estimate Data
     if (this.tableSwitch && this.tableSwitch == '5') {
       this.categoryService.getEstimateData().subscribe(res => {

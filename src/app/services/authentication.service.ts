@@ -15,4 +15,12 @@ export class AuthenticationService {
     );
   }
 
+  checkPermission() {
+    if (localStorage.getItem('userData')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

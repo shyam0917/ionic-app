@@ -25,9 +25,7 @@ export class CategoryService {
 
   //get invoice category details
   getInvoiceData() {
-    return this.http.get(this.baseUrl + 'invoice').pipe(
-      map(results => results)
-    );
+    return this.http.get(this.baseUrl + 'invoice')
   }
 
   //get estimate category details

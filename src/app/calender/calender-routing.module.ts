@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: CalenderPage
+  },
+  {
+    path: 'add-event',
+    loadChildren: () => import('./add-event/add-event.module').then(m => m.AddEventPageModule)
   }
 ];
 
@@ -14,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CalenderPageRoutingModule {}
+export class CalenderPageRoutingModule { }

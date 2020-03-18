@@ -76,14 +76,14 @@
 
       <!-- Invoice Details -->
       <ion-list *ngIf="switch=='4'" class="main-list">
-        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/4">
+        <ion-item *ngFor="let item of categoryArr" lines="none" routerLink="/table/4" [queryParams]="item">
           <ion-avatar slot="start">
             <span class="icon"><i class="fas fa-user-circle"></i></span>
           </ion-avatar>
           <ion-label>
             <ion-label>
               <h2 class="set-content" innerHTML="{{item?.title}} - <b>{{item?.post_status}}</b>"></h2>
-              <h3><b>Amount: </b>$100 </h3>
+              <h3><b>Amount: </b>{{item?.client_invoice_amount}} </h3>
             </ion-label>
           </ion-label>
         </ion-item>
