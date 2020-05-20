@@ -6,10 +6,9 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from "@angular/common
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { Calendar } from '@ionic-native/calendar';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CalendarModule } from 'ion2-calendar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,14 +16,14 @@ import { CalendarModule } from 'ion2-calendar';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    CalendarModule,
     AppRoutingModule,
     HttpClientModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Calendar
   ],
   bootstrap: [AppComponent]
 })
