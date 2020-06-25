@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class CategoryService {
 
-  baseUrl = 'http://192.168.1.129/cands/wp-json/custom-plugin/';
+  baseUrl = 'https://cands.ca/wp-json/custom-plugin/';
   constructor(private http: HttpClient) { }
 
   //get project category details

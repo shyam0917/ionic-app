@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'main-list/:id',
     loadChildren: () => import('./main-list/main-list.module').then( m => m.MainListPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   }
 ];
 

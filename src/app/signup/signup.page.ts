@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { MenuController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -20,7 +20,9 @@ export class SignupPage implements OnInit {
   }
 
   constructor(private loginService: AuthenticationService,
-    private router: Router) { }
+    private router: Router,
+    private menu: MenuController) {
+  }
 
   ngOnInit() {
     this.userCredentials = {
@@ -28,6 +30,15 @@ export class SignupPage implements OnInit {
       password: ""
     }
     this.errMessage = "";
+  }
+
+  ionViewDidEnter() {
+    this.menu.swipeGesture(false);
+
+  }
+
+  ionViewWillLeave() {
+    this.menu.swipeGesture(true);
   }
 
   togglePage() {
@@ -45,12 +56,17 @@ export class SignupPage implements OnInit {
       formData.append('password', loginData.password);
       this.loginService.oniLogin(formData).subscribe(res => {
         if (res && res['data']) {
-          this.router.navigate(['home']);
-          localStorage.setItem("userData", JSON.stringify(res['data']));
-          console.log(res, "res");
+          if (res['code'] == "invalid_username") {
+            this.isFailed = true;
+            this.errMessage = "INVALID CREDENTIALS";
+          } else {
+            this.router.navigate(['home']);
+            localStorage.setItem("userData", JSON.stringify(res['data']));
+          }
+
         } else {
           this.isFailed = true;
-          this.errMessage = "INTERNAL ERROR OCCURRED";
+          this.errMessage = "INVALID CREDENTIALS";
         }
 
 
